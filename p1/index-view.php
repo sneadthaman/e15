@@ -14,6 +14,29 @@
     <link rel="stylesheet" href="">
 </head>
 
+<style>
+h1,
+form {
+    text-align: center;
+    margin-top: 3.5rem;
+}
+
+.output {
+    border: 3px dotted white;
+    width: 50%;
+    margin: 3rem auto;
+    padding: 2rem;
+    font-family: 'Courier', sans-serif;
+    font-size: 2rem;
+    background-color: #6A5B6E;
+    color: white;
+}
+
+.output>div {
+    margin: 1rem;
+}
+</style>
+
 <body>
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
@@ -27,23 +50,25 @@
     </form>
 
     <?php if (isset($stringIn)): ?>
-    <div>
-        String: <?=$stringIn ?>
-    </div>
+    <div class="output">
+        <div>
+            String: <?=$stringIn ?>
+        </div>
 
-    <div>
-        Is Palindrome: <?php if ($isPalindrome) { ?>
-        True
-        <?php } else { ?>
-        False
-        <?php } ?>
-    </div>
+        <div>
+            Is Palindrome: <?php if ($isPalindrome) { ?>
+            True
+            <?php } else { ?>
+            False
+            <?php } ?>
+        </div>
 
-    <div>
-        Vowel Count: <?=$vowelCount?>
-    </div>
+        <div>
+            Vowel Count: <?=$vowelCount?>
+        </div>
 
-    <?php endif ?>
+        <?php endif ?>
+    </div>
 
 </body>
 
