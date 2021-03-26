@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&family=Nunito:wght@300&family=PT+Sans&display=swap');
+
+:root {
+    /* Colors */
+    --black: #212529;
+    --white: #f8f9fa;
+    --green: #74b816;
+    --blue: #228be6;
+    --red: #fa5252;
+    --purple: #7048e8;
+    --yellow: #fff3bf;
+    --ltgray: #e5e9f0;
+    --dkgray: #4c566a;
+
+    /* Fonts */
+    --serif-font: 'Nunito', sans-serif;
+    --decorative-font: 'New Tegomin', serif;
+    --sans-serif-font: 'PT Sans', sans-serif;
+
+    /* Font Scale */
+    --base-font-size: 16px;
+    --scale-factor: 1.25; 
+    --h5-font-size: calc(var(--base-font-size) * var(--scale-factor));
+    --h4-font-size: calc(var(--h5-font-size) * var(--scale-factor));
+    --h3-font-size: calc(var(--h4-font-size) * var(--scale-factor));
+    --h2-font-size: calc(var(--h3-font-size) * var(--scale-factor));
+    --h1-font-size: calc(var(--h2-font-size) * var(--scale-factor));
+    --small-font-size: calc(var(--base-font-size) / var(--scale-factor));
+}
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background: var(--white);
+    font-family: var(--serif-font);
+    color: #000000;
+}
+
+header, footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 1rem 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--decorative-font);
+}
+
+h1 { 
+    font-size: var(--h1-font-size);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+h2 { font-size: var(--h2-font-size); }
+h3 { font-size: var(--h3-font-size); }
+h4 { font-size: var(--h4-font-size); }
+h5 { font-size: var(--h5-font-size); }
+h6 { font-size: var(--h6-font-size); }
+.small-text { font-size: var(--small-font-size); }
+
+section {
+    margin: 1.5rem;
+}
+
+textarea {
+    margin-bottom: 1.25rem;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
