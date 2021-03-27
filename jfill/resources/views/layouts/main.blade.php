@@ -13,7 +13,7 @@
 <body>
 
     <header>
-        <!-- Diversey Image -->
+
         <img src="/images/janvey_logo-125.png" alt="Janvey Logo" />
 
     </header>
