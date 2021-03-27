@@ -13,7 +13,7 @@
 <body>
 
     <header>
-
+        <!-- Janvey Logo -->
         <img src="/images/janvey_logo-125.png" alt="Janvey Logo" />
 
     </header>
