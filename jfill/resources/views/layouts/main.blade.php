@@ -12,7 +12,7 @@
 
 <body>
 
-    <header>
+    <header class="d-flex align-items-center flex-wrap justify-content-evenly">
         <!-- Janvey Logo -->
         <img src="/images/janvey_logo-125.png" alt="Janvey Logo" />
         <h1>J-Fill Service Request</h1>
