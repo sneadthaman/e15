@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmMail;
+use App\Mail\RequestMail;
 
 class JfillController extends Controller
 {
@@ -14,10 +17,10 @@ class JfillController extends Controller
         return view('pages/welcome');
     }
 
-    public function processed()
-    {
-        return view('pages/processed');
-    }
+    // public function processed()
+    // {
+    //     return view('pages/processed');
+    // }
 
     /**
      * POST /
@@ -39,14 +42,19 @@ class JfillController extends Controller
         $unitType = $request->input('unitType', 'quattro');
         $numOfUnits = $request->input('numOfUnits', 1);
         $unitDesc = $request->input('unitDesc', null);
+
+        $data = [
+            'customer_name' => $custName,
+            'customer_phone' => $custPhone,
+            'customer_email' => $custEmail,
+            'unit_type' => $unitType,
+            'number_units' => $numOfUnits,
+            'description' => $unitDesc
+        ];
+
+        Mail::to($custEmail)->send(new ConfirmMail());
+        Mail::to('info@janvey.com')->send(new RequestMail($data));
         
-        return view('pages/processed')->with([
-            'custName' => $custName,
-            'custPhone' => $custPhone,
-            'custEmail' => $custEmail,
-            'unitType' => $unitType,
-            'numOfUnits' => $numOfUnits,
-            'unitDesc' => $unitDesc
-        ]);
+        return redirect('/email');
     }
 }
