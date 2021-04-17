@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use App\Models\Book;
+use App\Models\Author;
 
 class BookController extends Controller
 {
@@ -11,126 +13,87 @@ class BookController extends Controller
     * GET /books/create
     * Display the form to add a new book
     */
-    public function create(Request $request) 
+    public function create(Request $request)
     {
-        return view('books/create');
-    }
+        $authors = Author::orderBy('last_name')->select(['id', 'first_name', 'last_name'])->get();
 
+        return view('books/create', ['authors' => $authors]);
+    }
 
     /**
     * POST /books
     * Process the form for adding a new book
     */
-    public function store(Request $request) 
+    public function store(Request $request)
     {
-    /**
-    * POST /books
-    * Process the form for adding a new book
-    */
+        $request->validate(
+            [
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:books,slug',
+            'author_id' => 'required',
+            'published_year' => 'required|digits:4',
+            'cover_url' => 'required|url',
+            'info_url' => 'required|url',
+            'purchase_url' => 'required|url',
+            'description' => 'required|min:100'
+        ]
+        );
 
-    # Validate the request data
-    # The `$request->validate` method takes an array of data 
-    # where the keys are form inputs
-    # and the values are validation rules to apply to those inputs
-    $request->validate([
-        'title' => 'required',
-        'author' => 'required',
-        'published_year' => 'required|digits:4',
-        'cover_url' => 'url',
-        'purchase_url' => 'required|url',
-        'description' => 'required|min:255'
-    ]);
- 
-     # Note: If validation fails, it will automatically redirect the visitor back to the form page
-     # and none of the code that follows will execute.
- 
-        # Code will eventually go here to add the book to the database, 
-        # but for now we'll just dump the form data to the page for proof of concept
-    dump($request->all());
+        $book = new Book();
+        $book->title = $request->title;
+        $book->slug = $request->slug;
+        $book->author_id = $request->author_id;
+        $book->published_year = $request->published_year;
+        $book->cover_url = $request->cover_url;
+        $book->info_url = $request->info_url;
+        $book->purchase_url = $request->purchase_url;
+        $book->description = $request->description;
+        $book->save();
+        
+        return redirect('/books/create')->with(['flash-alert' => 'The book “'.$book->title.'” was added.']);
     }
+
     /**
      * GET /search
      * Search books based on title or author
      */
-    public function search(Request $request) 
+    public function search(Request $request)
     {
-        # ======== Temporary code to explore $request ==========
-
-        # Get all the properties and methods available in the $request object
-        //dump($request); # Object of type Illuminate\Http\Request
-
-        # Get the form data (array) from the $request object
-        //dump($request->all()); # Equivalent of dump($_GET)
-
-        # Get the form data from individual fields
-        //dump($request->input('searchTerms'));
-        //dump($request->input('searchType'));
-    
-        # Form data from individual fields can also be accessed via dynamic properties
-        //dump($request->searchTerms);
-
-        # Boolean to see if the request contains data for a particular field
-        //dump($request->has('searchType'));
-        
-        # You can get more information about a request than just the data of the form, for example...
-        //dump($request->path()); # "search"
-        //dump($request->is('search')); # true
-        //dump($request->is('books')); # false
-        //dump($request->fullUrl()); # e.g. http://bookmark.loc search?searchTerms=Harry%20Potter&searchType=title
-        //dump($request->method()); # GET
-        //dump($request->isMethod('post')); # False
-
-        # ======== End exploration of $request ==========
-
         $request->validate([
             'searchTerms' => 'required',
             'searchType' => 'required'
         ]);
 
-        $bookData = file_get_contents(database_path('books.json'));
-        $books = json_decode($bookData, true);
+        # If validation fails, it will redirect back to `/`
 
+        # Get form data
         $searchType = $request->input('searchType', 'title');
         $searchTerms = $request->input('searchTerms', '');
-        $searchResults = [];
 
-        foreach($books as $slug => $book) {
-            if(strtolower($book[$searchType]) == strtolower($searchTerms)) {
-                $searchResults[$slug] = $book;
-            }
-        }
+        # Do the search
+        $searchResults = Book::where($searchType, 'LIKE', '%'.$searchTerms.'%')->get();
 
+        # Send user back to the homepage with results
         return redirect('/')->with([
             'searchResults' => $searchResults
-            ])->withInput(); //withInput makes validation data available
+        ])->withInput();
     }
+    
     /**
      * GET /books
      * Show all the books
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Hard-coded books for practice:
-        // $books = [
-        //     ['title' => 'War and Peace', 'author' => 'Leo Tolstoy'],
-        //     ['title' => 'The Great Gatsby', 'author' => 'F. Scott Fitzgerald'],
-        //     ['title' => 'I Know Why the Caged Bird Sings', 'author' => 'Maya Angelou'],
-        // ];
+        $books = Book::orderBy('title', 'ASC')->get();
 
-        # Load our book data using PHP's file_get_contents
-        # We specify our books.json file path using Laravel's database_path helper
-        $bookData = file_get_contents(database_path('books.json'));
-    
-        # Convert the string of JSON text we loaded from books.json into an
-        # array using PHP's built-in json_decode function
-        $books = json_decode($bookData, true);
+        # Query the database for new books
+        //$newBooks = Book::orderBy('id', 'DESC')->limit(3)->get();
+        
+        # vs. Query the collection for new books
+        $newBooks = $books->sortByDesc('id')->take(3);
 
-        # Alphabetize the books
-        $books = Arr::sort($books, function ($value) {
-            return $value['title'];
-        });
-
-        return view('books/index', ['books' => $books]);
+        return view('books/index', ['books' => $books, 'newBooks' => $newBooks]);
     }
 
     /**
@@ -139,16 +102,12 @@ class BookController extends Controller
      */
     public function show($slug)
     {
-        # Load our book data
-        # TODO: This code is redundant with loading the books in the index method
-        $bookData = file_get_contents(database_path('books.json'));
-        $books = json_decode($bookData, true);
+        $book = Book::findBySlug($slug);
 
-        # Narrow down our array of books
-        $book = Arr::first($books, function ($value, $key) use ($slug) {
-            return $key == $slug;
-        });
-        
+        if (!$book) {
+            return redirect('/books')->with(['flash-alert' => 'Book not found.']);
+        }
+    
         return view('books/show', [
             'book' => $book,
         ]);
@@ -161,5 +120,81 @@ class BookController extends Controller
     {
         # TODO
         return view('books/list');
+    }
+
+    /**
+     * GET /books/{slug}/edit
+     */
+    public function edit(Request $request, $slug)
+    {
+        $book = Book::findBySlug($slug);
+
+        if (!$book) {
+            return redirect('/books')->with(['flash-alert' => 'Book not found.']);
+        }
+
+        return view('books/edit', ['book' => $book]);
+    }
+
+    /**
+     * PUT /books
+     */
+    public function update(Request $request, $slug)
+    {
+        $book = Book::findBySlug($slug);
+
+        $request->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:books,slug,'.$book->id.'|alpha_dash',
+            'author' => 'required',
+            'published_year' => 'required|digits:4',
+            'cover_url' => 'url',
+            'info_url' => 'url',
+            'purchase_url' => 'required|url',
+            'description' => 'required|min:255'
+        ]);
+
+        $book->title = $request->title;
+        $book->slug = $request->slug;
+        $book->author = $request->author;
+        $book->published_year = $request->published_year;
+        $book->cover_url = $request->cover_url;
+        $book->info_url = $request->info_url;
+        $book->purchase_url = $request->purchase_url;
+        $book->description = $request->description;
+        $book->save();
+
+        return redirect('/books/'.$slug.'/edit')->with(['flash-alert' => 'Your changes were saved.']);
+    }
+
+    /**
+    * Asks user to confirm they want to delete the book
+    * GET /books/{slug}/delete
+    */
+    public function delete($slug)
+    {
+        $book = Book::findBySlug($slug);
+
+        if (!$book) {
+            return redirect('/books')->with([
+                'flash-alert' => 'Book not found'
+            ]);
+        }
+
+        return view('books/delete', ['book' => $book]);
+    }
+
+    /**
+    * Deletes the book
+    * DELETE /books/{slug}/delete
+    */
+    public function destroy($slug)
+    {
+        $book = Book::findBySlug($slug);
+        $book->delete();
+
+        return redirect('/books')->with([
+            'flash-alert' => '“' . $book->title . '” was removed.'
+        ]);
     }
 }

@@ -1,6 +1,17 @@
 @extends('layouts/main')
 
+@section('head')
+<link href='/css/pages/welcome.css' rel='stylesheet'>
+@endsection
+
 @section('content')
+
+@if(Auth::user())
+<h2>
+    Hello {{ Auth::user()->name }}!
+</h2>
+@endif
+
 <p>
     Welcome to Bookmark&mdash; an online book journal that lets you track and share a history of books you’ve read.
 </p>
@@ -21,10 +32,11 @@
             Search type:
         </label>
 
-        <input type='radio' name='searchType' id='title' value='title' {{ (old('searchType') == 'title') ? 'checked' : '' }}>
+        <input type='radio' name='searchType' id='title' value='title' {{ (old('searchType', 'title') == 'title' ) ? 'checked' : '' }}>
         <label for='title'> Title</label>
 
         <input type='radio' name='searchType' id='author' value='author' {{ (old('searchType') == 'author') ? 'checked' : '' }}>
+
         <label for='author'> Author</label>
 
     </fieldset>
@@ -38,6 +50,7 @@
         @endforeach
     </ul>
     @endif
+
 </form>
 
 @if(!is_null($searchResults))
@@ -51,12 +64,15 @@
     {{ count($searchResults) }}
     {{ Str::plural('Result', count($searchResults)) }}:
 
-    <ul>
+    <ul class='clean-list'>
         @foreach($searchResults as $slug => $book)
-        <li><a href='/books/{{ $slug }}'> {{ $book['title']   }}</a></li>
+        <li><a href='/books/{{ $slug }}'> {{ $book['title'] }}</a></li>
         @endforeach
     </ul>
 </div>
 @endif
 @endif
+
+
+
 @endsection

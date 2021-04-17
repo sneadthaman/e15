@@ -1,0 +1,59 @@
+/* Global Variables */
+$black: black;
+$white: white;
+
+* {box-sizing: border-box;}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'nav header header header header header'
+    'nav main main main main main'
+    'nav footer footer footer footer footer';
+}
+
+header {
+  grid-area: header;
+  background-color: $black;
+  color: $white;
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  grid-area: nav;
+  background-color: $black;
+  color: $white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-links {
+  
+  a {
+    color: $white;
+  }
+}
+
+main {
+  grid-area: main;
+  grid-row: 2/5;
+}
+
+footer {
+  grid-area: footer;
+  background-color: $black;
+  color: $white;
+}
+
+a:link {
+  text-decoration: none;
+}
+a:visited {}
+a:hover {}
+a:active {}
+
+ul {
+  list-style: none;
+}
