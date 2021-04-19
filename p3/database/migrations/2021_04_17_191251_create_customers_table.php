@@ -16,23 +16,23 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('salesperson_code');
-            $table->string('salesperson_name');
-            $table->integer('cust_category');
-            $table->integer('cust_number');
+            $table->integer('salesperson_code')->nullable();
+            $table->string('salesperson_name')->nullable();
+            $table->integer('cust_category')->nullable();
+            $table->string('cust_number');
             $table->string('cust_name');
             $table->string('cust_city');
             $table->string('cust_state');
             $table->string('cust_zip');
-            $table->float('sales_ytd')->nullable();
-            $table->float('gpdollars_ytd')->nullable();
-            $table->float('gppercent_ytd')->nullable();
-            $table->float('last_year_sales')->nullable();
-            $table->float('last_year_gp')->nullable();
-            $table->float('last_year_gppercent')->nullable();
-            $table->string('last_invoice_date')->nullable();
-            $table->string('last_payment_date')->nullable();
-            $table->float('ar_balance')->nullable();
+            $table->float('sales_ytd', null)->nullable();
+            $table->float('gpdollars_ytd', null)->nullable();
+            $table->float('gppercent_ytd', null)->nullable();
+            $table->float('last_year_sales', null)->nullable();
+            $table->float('last_year_gp', null)->nullable();
+            $table->float('last_year_gppercent', null)->nullable();
+            $table->string('last_invoice_date', null)->nullable();
+            $table->string('last_payment_date', null)->nullable();
+            $table->float('ar_balance', null)->nullable();
         });
     }
 

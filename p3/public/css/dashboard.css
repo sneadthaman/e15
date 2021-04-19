@@ -51,9 +51,6 @@ main {
   -ms-grid-column: 2;
   -ms-grid-column-span: 5;
   grid-area: main;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 3;
-  grid-row: 2/5;
 }
 
 footer {

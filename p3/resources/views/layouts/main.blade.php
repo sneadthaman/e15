@@ -28,11 +28,11 @@
 
         </header>
 
-        <nav>
+        <nav class="position-fixed">
             <div>Logo</div>
             <div class="nav-links" id="main-links">
                 <ul>
-                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Customers</a></li>
                     <li><a href="#">Link 2</a></li>
                     <li><a href="#">Link 3</a></li>
                     <li><a href="#">Link 4</a></li>
@@ -53,7 +53,7 @@
             @yield('content')
         </main>
 
-        <footer>&#169; Sam Janvey 2021</footer>
+        <footer class="position-sticky">&#169; Sam Janvey 2021</footer>
     </div>
 </body>
 
