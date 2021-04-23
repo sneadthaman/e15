@@ -28,7 +28,7 @@ Edit book {{ $book->title }}
     @include('includes/error-field', ['fieldName' => 'title'])
 
     <label for='author'>* Author</label>
-    <input type='text' name='author' id='author' value='{{ old('author', $book->author) }}'>
+    <input type='text' name='author' id='author' value='{{ old('author', $book->author->first_name $book->author->last_name ) }}'>
     @include('includes/error-field', ['fieldName' => 'author'])
 
     <label for='published_year'>* Published Year (YYYY)</label>
