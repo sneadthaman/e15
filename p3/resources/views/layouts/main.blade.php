@@ -13,47 +13,46 @@
 </head>
 
 <body>
+    <header>
+        <h2>Welcome to your Sales Dashboard</h2>
+
+        <div class="search-container">
+            <form method="GET" action="/search.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"> </i></button>
+            </form>
+        </div>
+
+
+    </header>
     <div class="grid-container">
 
-        <header>
-            <h2>Welcome to your Sales Dashboard</h2>
-
-            <div class="search-container">
-                <form method="GET" action="/search.php">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><i class="fa fa-search"> </i></button>
-                </form>
-            </div>
-
-
-        </header>
-
         <nav class="position-fixed">
-            <div>Logo</div>
+            {{-- <div>Logo</div> --}}
             <div class="nav-links" id="main-links">
                 <ul>
                     <li><a href="#">Customers</a></li>
-                    <li><a href="#">Link 2</a></li>
-                    <li><a href="#">Link 3</a></li>
-                    <li><a href="#">Link 4</a></li>
+                    <li><a href="#">Projects</a></li>
+                    {{-- <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li> --}}
                 </ul>
             </div>
 
-            <div class="nav-links" id="admin-links">
+            {{-- <div class="nav-links" id="admin-links">
                 <ul>
                     <li><a href="#">Link 1</a></li>
                     <li><a href="#">Link 2</a></li>
                     <li><a href="#">Link 3</a></li>
                     <li><a href="#">Link 4</a></li>
                 </ul>
-            </div>
+            </div> --}}
         </nav>
 
-        <main>
+        <main class="container overflow-auto">
             @yield('content')
         </main>
 
-        <footer class="position-sticky">&#169; Sam Janvey 2021</footer>
+        {{-- <footer class="position-sticky">&#169; Sam Janvey 2021</footer> --}}
     </div>
 </body>
 

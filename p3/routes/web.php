@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 Route::get('/', [DashboardController::class, 'index']);
 
+Route::get('/{slug}', [DashboardController::class, 'show']);
+
 Route::get('/debug', function () {
 
     $debug = [

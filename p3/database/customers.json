@@ -1,0 +1,52 @@
+{
+    "nassau-medical-center": {
+        "cust_name": "Nassau Medical Center",
+        "cust_number": 11990,
+        "cust_city": "East Meadow",
+        "cust_state": "NY",
+        "cust_zip": 11554,
+        "sales_ytd": "77978.90",
+        "gpdollars_ytd": "19000.08",
+        "gppercent_ytd": "24.37"
+    },
+    "episcopal-health-services": {
+        "cust_name": "Episcopal Health Services",
+        "cust_number": 4546,
+        "cust_city": "Garden City",
+        "cust_state": "NY",
+        "cust_zip": 11530,
+        "sales_ytd": "21754.25",
+        "gpdollars_ytd": "8617.20",
+        "gppercent_ytd": "39.61"
+    },
+    "allied-aviation": {
+        "cust_name": "Allied Aviation Services",
+        "cust_number": 13280,
+        "cust_city": "Jamaica",
+        "cust_state": "NY",
+        "cust_zip": 11430,
+        "sales_ytd": "7529.79",
+        "gpdollars_ytd": "2524.23",
+        "gppercent_ytd": "33.52"
+    },
+    "south-nassau-community-hospital": {
+        "cust_name": "South Nassau Community Hospital",
+        "cust_number": 16330,
+        "cust_city": "Oceanside",
+        "cust_state": "NY",
+        "cust_zip": 11572,
+        "sales_ytd": "41232.87",
+        "gpdollars_ytd": "11667.39",
+        "gppercent_ytd": "28.3"
+    },
+    "valley-dream-housing": {
+        "cust_name": "Valley Dream Housing",
+        "cust_number": 19160,
+        "cust_city": "Valley Stream",
+        "cust_state": "NY",
+        "cust_zip": 11580,
+        "sales_ytd": "2208.66",
+        "gpdollars_ytd": "674.85",
+        "gppercent_ytd": "30.55"
+    }
+}
