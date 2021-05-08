@@ -8,6 +8,12 @@
 
 @section('content')
 
+@if(Auth::user())
+<h2>
+    {{ Auth::user()->name }}
+</h2>
+@endif
+
 <div>
     <table class="table table-hover">
         <thead class="table-light">
