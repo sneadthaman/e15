@@ -4,9 +4,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 
-Route::get('/', [DashboardController::class, 'index']);
 
-Route::get('/{slug}', [DashboardController::class, 'show']);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [DashboardController::class, 'index']);
+
+    Route::get('/{slug}', [DashboardController::class, 'show']);
+
+    Route::get('/projects', [DashboardController::class, 'list']);
+
+    Route::post('/projects', [DashboardController::class, 'store']);
+});
+
 
 Route::get('/debug', function () {
 

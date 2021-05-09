@@ -25,6 +25,7 @@ class CreateCustomersTable extends Migration
             $table->float('sales_ytd', null)->nullable();
             $table->float('gpdollars_ytd', null)->nullable();
             $table->float('gppercent_ytd', null)->nullable();
+            $table->integer('project_num', null)->nullable();
         });
     }
 

@@ -12,4 +12,14 @@ class Customer extends Model {
     {
         return self::where('slug', '=', $slug)->first();
     }
+
+    public static function findByCustNum($cust_number)
+    {
+        return self::where('cust_number', '=', $cust_number)->first();
+    }
+
+    public function projects()
+    {
+        return $this->hasMany('App\Models\Project');
+    }
 }

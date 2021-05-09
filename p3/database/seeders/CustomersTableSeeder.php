@@ -40,7 +40,6 @@ class CustomersTableSeeder extends Seeder
             $customer->sales_ytd = $customerData['sales_ytd'];
             $customer->gpdollars_ytd = $customerData['gpdollars_ytd'];
             $customer->gppercent_ytd = $customerData['gppercent_ytd'];
-
             $customer->save();
             $count--;
         }

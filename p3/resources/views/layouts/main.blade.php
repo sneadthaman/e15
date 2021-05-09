@@ -31,21 +31,20 @@
             {{-- <div>Logo</div> --}}
             <div class="nav-links" id="main-links">
                 <ul>
-                    <li><a href="#">Customers</a></li>
-                    <li><a href="#">Projects</a></li>
+                    <li><a href="/">Customers</a></li>
+                    <li><a href="/projects">Projects</a></li>
+
                     {{-- <li><a href="#">Link 3</a></li>
                     <li><a href="#">Link 4</a></li> --}}
                 </ul>
             </div>
 
-            {{-- <div class="nav-links" id="admin-links">
-                <ul>
-                    <li><a href="#">Link 1</a></li>
-                    <li><a href="#">Link 2</a></li>
-                    <li><a href="#">Link 3</a></li>
-                    <li><a href="#">Link 4</a></li>
-                </ul>
-            </div> --}}
+            <div class="nav-links" id="admin-links">
+                <form method='POST' id='logout' action='/logout'>
+                    {{ csrf_field() }}
+                    <a href='#' onClick='document.getElementById("logout").submit();'>Logout</a>
+                </form>
+            </div>
         </nav>
 
         <main class="container overflow-auto">
