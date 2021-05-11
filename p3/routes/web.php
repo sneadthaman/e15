@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Http\Request;
 
 
@@ -10,10 +11,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/{slug}', [DashboardController::class, 'show']);
 
-    Route::get('/projects', [DashboardController::class, 'list']);
+    Route::get('/projects', [ProjectController::class, 'list']);
 
-    Route::post('/projects', [DashboardController::class, 'store']);
-});
+    Route::post('/projects', [ProjectController::class, 'store']);    
+}); 
+
 
 
 Route::get('/debug', function () {
