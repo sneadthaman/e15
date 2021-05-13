@@ -47,7 +47,7 @@
             </div>
         </nav>
 
-        <main class="container overflow-auto">
+        <main class="container overflow-auto ps-5">
             @yield('content')
         </main>
 

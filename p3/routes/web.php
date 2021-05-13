@@ -9,11 +9,21 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index']);
 
-    Route::get('/{slug}', [DashboardController::class, 'show']);
-
     Route::get('/projects', [ProjectController::class, 'list']);
 
-    Route::post('/projects', [ProjectController::class, 'store']);    
+    Route::get('/{slug}', [DashboardController::class, 'show']);
+
+    // CREATE
+    Route::post('/projects', [ProjectController::class, 'store']);
+
+    // READ
+    Route::get('/projects/{id}', [ProjectController::class, 'show']);
+
+    //UPDATE
+    Route::put('/projects/{id}', [ProjectController::class, 'update']);
+
+    // DELETE
+    Route::delete('projects/{id}', [ProjectController::class, 'destroy']);
 }); 
 
 

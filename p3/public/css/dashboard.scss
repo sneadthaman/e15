@@ -57,7 +57,7 @@ ul {
 }
 
 .flash-alert {
-  background-color: yellow;
+  background-color: green;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -65,4 +65,8 @@ ul {
   padding: 5px;
   font-weight: bold;
   text-align: center;
+}
+
+.ms-5 {
+  margin-left: 20rem !important;
 }

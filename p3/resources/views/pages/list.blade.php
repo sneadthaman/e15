@@ -10,9 +10,11 @@
 <div>
     <ul>
         <li>
-            {{ $project->project_name }}
+            <a href="../projects/{{$project->id}}">{{ $project->project_name }}</a>
         </li>
     </ul>
 </div>
+@endforeach
+@endif
 
 @endsection

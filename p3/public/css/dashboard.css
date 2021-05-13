@@ -73,4 +73,8 @@ ul {
   font-weight: bold;
   text-align: center;
 }
+
+.ms-5 {
+  margin-left: 20rem !important;
+}
 /*# sourceMappingURL=dashboard.css.map */
