@@ -24,7 +24,7 @@ class ProjectController extends Controller
                 "begin_date" => "required|date",
                 "end_date" => "required|date",
                 "project_email" => "required|email",
-                "complete_pct" => "required|integer"
+                "complete_pct" => "required|integer|min:0|max:100"
             ]
         );
 
@@ -61,7 +61,7 @@ class ProjectController extends Controller
                 "begin_date" => "required|date",
                 "end_date" => "required|date",
                 "project_email" => "required|email",
-                "complete_pct" => "required|integer"
+                "complete_pct" => "required|integer|min:0|max:100"
             ]
         );
 

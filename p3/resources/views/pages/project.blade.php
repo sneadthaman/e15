@@ -13,18 +13,23 @@
 
         <label for="cust_number">Customer Number</label>
         <input type="number" name="cust_number" id="cust_number" value={{ $project->cust_number }} />
+        @include('includes/error-field', ['fieldName' => 'cust_number'])
 
         <label for="begin_date">Begin Date</label>
         <input type="date" name="begin_date" id="begin_date" value="{{ $project->begin_date }}" />
+        @include('includes/error-field', ['fieldName' => 'begin_date'])
 
         <label for="end_date">End Date</label>
         <input type="date" name="end_date" id="end_date" value="{{ $project->end_date }}" />
+        @include('includes/error-field', ['fieldName' => 'end_date'])
 
         <label for="project_email">Customer Email</label>
         <input type="email" name="project_email" id="project_email" value="{{ $project->project_email }}" />
+        @include('includes/error-field', ['fieldName' => 'project_email'])
 
         <label for="complete_pct">Progress (%)</label>
         <input type="number" name="complete_pct" id="complete_pct" value="{{ $project->complete_pct }}" />
+        @include('includes/error-field', ['fieldName' => 'complete_pct'])
     </fieldset>
 
     <button type="submit" class="btn btn-primary">Update Project</button>
@@ -36,5 +41,11 @@
     {{ csrf_field() }}
     <button type="submit" class="btn btn-danger">Delete Project</button>
 </form>
+
+@if(count($errors) > 0)
+<div class='alert alert-danger'>
+    Please correct the above errors.
+</div>
+@endif
 
 @endsection
