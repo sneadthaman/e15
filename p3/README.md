@@ -16,3 +16,7 @@
 
 -   My application has 3 tables (`users`, `customers`, `projects`)
 -   There's a one-to-many relationship between `customers` and `projects`
+
+## Outside Resources
+
+-   [Bootstrap 5](https://getbootstrap.com/)
