@@ -12,7 +12,7 @@
         <legend class="mt-3">Edit A Project</legend>
 
         <label for="cust_number" class="form-label">Customer Number</label>
-        <input type="number" class="form-control" name="cust_number" id="cust_number" value={{ $project->cust_number }} disabled />
+        <input type="number" class="form-control" name="cust_number" id="cust_number" value={{ $project->cust_number }} />
         @include('includes/error-field', ['fieldName' => 'cust_number'])
 
         <label for="begin_date" class="form-label">Begin Date</label>

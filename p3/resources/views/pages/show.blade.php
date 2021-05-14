@@ -19,7 +19,7 @@
         <label for="cust_number" class="form-label">Customer Number</label>
         <input type="number" class="form-control" name="cust_number" id="cust_number" value={{ $customer->cust_number }} value="{{ 
              old("cust_number")
-        }}" dusk='cust-number' disabled />
+        }}" dusk='cust-number' />
         @include('includes/error-field', ['fieldName' => 'cust_number'])
 
         <label for="begin_date" class="form-label">Begin Date</label>

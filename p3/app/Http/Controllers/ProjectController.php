@@ -39,7 +39,7 @@ class ProjectController extends Controller
 
         $customer = Customer::findByCustNum($project->cust_number);
 
-        $slug = $customer->slug;
+        //$slug = $customer->slug;
         $project->save();
 
         return redirect('/projects')->with(['flash-alert' => 'Project was added']);
