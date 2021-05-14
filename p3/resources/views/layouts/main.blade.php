@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    <header>
-        <h2>Welcome to your Sales Dashboard</h2>
+    <header class="d-flex flex-row">
+        <h2 class="d-flex">Welcome to your Sales Dashboard</h2>
 
-        <div class="search-container">
+        <div class="search-container d-flex justify-content-end">
             <form method="GET" action="/search.php">
                 <input type="text" placeholder="Search.." name="search">
                 <button type="submit"><i class="fa fa-search"> </i></button>

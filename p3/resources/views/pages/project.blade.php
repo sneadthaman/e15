@@ -8,27 +8,27 @@
     {{ method_field('put') }}
     {{ csrf_field() }}
 
-    <fieldset>
-        <legend>Edit A Project</legend>
+    <fieldset class="mb-3">
+        <legend class="mt-3">Edit A Project</legend>
 
-        <label for="cust_number">Customer Number</label>
-        <input type="number" name="cust_number" id="cust_number" value={{ $project->cust_number }} />
+        <label for="cust_number" class="form-label">Customer Number</label>
+        <input type="number" class="form-control" name="cust_number" id="cust_number" value={{ $project->cust_number }} disabled />
         @include('includes/error-field', ['fieldName' => 'cust_number'])
 
-        <label for="begin_date">Begin Date</label>
-        <input type="date" name="begin_date" id="begin_date" value="{{ $project->begin_date }}" />
+        <label for="begin_date" class="form-label">Begin Date</label>
+        <input type="date" class="form-control" name="begin_date" id="begin_date" value="{{ $project->begin_date }}" />
         @include('includes/error-field', ['fieldName' => 'begin_date'])
 
-        <label for="end_date">End Date</label>
-        <input type="date" name="end_date" id="end_date" value="{{ $project->end_date }}" />
+        <label for="end_date" class="form-label">End Date</label>
+        <input type="date" class="form-control" name="end_date" id="end_date" value="{{ $project->end_date }}" />
         @include('includes/error-field', ['fieldName' => 'end_date'])
 
-        <label for="project_email">Customer Email</label>
-        <input type="email" name="project_email" id="project_email" value="{{ $project->project_email }}" />
+        <label for="project_email" class="form-label">Customer Email</label>
+        <input type="email" class="form-control" name="project_email" id="project_email" value="{{ $project->project_email }}" />
         @include('includes/error-field', ['fieldName' => 'project_email'])
 
-        <label for="complete_pct">Progress (%)</label>
-        <input type="number" name="complete_pct" id="complete_pct" value="{{ $project->complete_pct }}" dusk='project-complete-pct' />
+        <label for="complete_pct" class="form-label">Progress (%)</label>
+        <input type="number" class="form-control" name="complete_pct" id="complete_pct" value="{{ $project->complete_pct }}" dusk='project-complete-pct' />
         @include('includes/error-field', ['fieldName' => 'complete_pct'])
     </fieldset>
 
@@ -39,7 +39,7 @@
 <form method='POST' action="../projects/{{ $project->id }}">
     {{ method_field('delete') }}
     {{ csrf_field() }}
-    <button type="submit" class="btn btn-danger" dusk='delete-button'>Delete Project</button>
+    <button type="submit" class="btn btn-danger mt-3" dusk='delete-button'>Delete Project</button>
 </form>
 
 @if(count($errors) > 0)

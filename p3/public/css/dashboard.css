@@ -15,14 +15,8 @@ header {
   -ms-grid-column: 2;
   -ms-grid-column-span: 5;
   grid-area: header;
-  background-color: black;
-  color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  background-color: #2e3440;
+  color: #eceff4;
 }
 
 nav {
@@ -30,13 +24,14 @@ nav {
   -ms-grid-row-span: 3;
   -ms-grid-column: 1;
   grid-area: nav;
-  background-color: black;
-  color: white;
+  background-color: #2e3440;
+  color: #eceff4;
   height: 100vh;
 }
 
 .nav-links a {
-  color: white;
+  color: #eceff4;
+  font-size: 2em;
 }
 
 main {
@@ -51,8 +46,8 @@ footer {
   -ms-grid-column: 2;
   -ms-grid-column-span: 5;
   grid-area: footer;
-  background-color: black;
-  color: white;
+  background-color: #2e3440;
+  color: #eceff4;
 }
 
 a:link {
@@ -64,7 +59,7 @@ ul {
 }
 
 .flash-alert {
-  background-color: yellow;
+  background-color: green;
   width: 100%;
   position: fixed;
   bottom: 0;
