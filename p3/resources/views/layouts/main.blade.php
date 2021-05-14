@@ -42,7 +42,7 @@
             <div class="nav-links" id="admin-links">
                 <form method='POST' id='logout' action='/logout'>
                     {{ csrf_field() }}
-                    <a href='#' onClick='document.getElementById("logout").submit();'>Logout</a>
+                    <a href='#' onClick='document.getElementById("logout").submit();' dusk='logout-button'>Logout</a>
                 </form>
             </div>
         </nav>

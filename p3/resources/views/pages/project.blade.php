@@ -28,18 +28,18 @@
         @include('includes/error-field', ['fieldName' => 'project_email'])
 
         <label for="complete_pct">Progress (%)</label>
-        <input type="number" name="complete_pct" id="complete_pct" value="{{ $project->complete_pct }}" />
+        <input type="number" name="complete_pct" id="complete_pct" value="{{ $project->complete_pct }}" dusk='project-complete-pct' />
         @include('includes/error-field', ['fieldName' => 'complete_pct'])
     </fieldset>
 
-    <button type="submit" class="btn btn-primary">Update Project</button>
+    <button type="submit" class="btn btn-primary" dusk='update-button'>Update Project</button>
 
 </form>
 
 <form method='POST' action="../projects/{{ $project->id }}">
     {{ method_field('delete') }}
     {{ csrf_field() }}
-    <button type="submit" class="btn btn-danger">Delete Project</button>
+    <button type="submit" class="btn btn-danger" dusk='delete-button'>Delete Project</button>
 </form>
 
 @if(count($errors) > 0)

@@ -10,7 +10,7 @@
 <div>
     <ul>
         <li>
-            <a href="../projects/{{$project->id}}">{{ $project->project_name }}</a>
+            <a href="../projects/{{$project->id}}" dusk='project-{{$project->id}}'>{{ $project->project_name }}</a>
         </li>
     </ul>
 </div>
