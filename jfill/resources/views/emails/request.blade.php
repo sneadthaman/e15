@@ -7,6 +7,8 @@ Customer Phone: {{ $data['customer_phone'] }}
 
 Customer Email: {{ $data['customer_email'] }}
 
+Customer Address: {{ $data['customer_address'] }}
+
 Type of dispenser: {{ $data['unit_type'] }}
 
 Number of units: {{ $data['number_units'] }}

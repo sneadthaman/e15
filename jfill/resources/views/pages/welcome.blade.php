@@ -24,6 +24,12 @@
     <div class='text-danger'>{{ $errors->first('custEmail') }}</div>
     @endif
 
+    <label for="custAddress" class="my-3 fs-3 form-label">Customer Address</label>
+    <input type="text" name="custAddress" class="form-control form-control-lg" value="{{ old("custAddress") }}" />
+    @if($errors->get('custAddress'))
+    <div class='text-danger'>{{ $errors->first('custAddress') }}</div>
+    @endif
+
     <label for="unitType" class="my-3 fs-3 form-label">Unit Type</label>
     <select name="unitType" class="form-select form-select-lg">
         <option selecteddisabled>--Select J-Fill Type--</option>

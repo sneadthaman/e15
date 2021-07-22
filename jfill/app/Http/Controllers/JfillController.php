@@ -33,11 +33,13 @@ class JfillController extends Controller
             'custName' => 'required',
             'custPhone' => 'required|min:7',
             'custEmail' => 'required|email',
+            'custAddress' => 'required',
             'numOfUnits' => 'required|min:1'
         ]);
         $custName = $request->input('custName', null);
         $custPhone = $request->input('custPhone', null);
         $custEmail = $request->input('custEmail', null);
+        $custAddress = $request->input('custAddress', null);
         // Default unitType to quattro since it is the most popular
         $unitType = $request->input('unitType', 'quattro');
         $numOfUnits = $request->input('numOfUnits', 1);
@@ -47,6 +49,7 @@ class JfillController extends Controller
             'customer_name' => $custName,
             'customer_phone' => $custPhone,
             'customer_email' => $custEmail,
+            'customer_address' => $custAddress,
             'unit_type' => $unitType,
             'number_units' => $numOfUnits,
             'description' => $unitDesc
